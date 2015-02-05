@@ -1,0 +1,73 @@
+html,body{
+	padding:0;
+	margin:0;
+	border:none;
+	-webkit-user-select: none;
+	-webkit-user-drag: none;
+}
+#stage{
+	position:fixed;
+	top:0;
+	left:0;
+}
+#bg{
+	background-image: url(images/bg.png);
+	background-size:auto 100%;
+	background-repeat: repeat-x;
+	background-position: 0 0;
+}
+#selfPlane,.bullet,.enemy{
+	position:absolute;
+	background-image: url(images/self.png);
+	background-repeat: no-repeat;
+	background-position: 50% 50%;
+	background-size: 100% auto;
+}
+.bullet{
+	width:30px;
+	height:30px;
+	background-image: url(images/bullet.png);
+	background-size: auto 100%;
+}
+.enemy{
+	width:40px;
+	height:40px;
+	background-image: url(images/boss.png);
+}
+#score{
+	background-color:rgba(0,0,0,0.3);
+	color:#FFF;
+	position: absolute;
+	left: 5px;
+	top: 5px;
+	padding: 5px;
+	border-radius: 3px;
+}
+.btn,#play,#reset,#level{
+	display:none;
+	position:absolute;
+	color: #FFF;
+	background-color:rgba(0,0,0,0.5);
+	padding: 6px 0 7px 0;
+	text-align: center;
+	width: 60px;
+	border-radius:4px;
+	font-size: 12px;
+}
+#play,#reset,#level{
+	padding: 0;
+	line-height:60px;
+	font-size:20px;
+	width: 120px;
+	height :60px;
+	font-family:微软雅黑,黑体,Verdana;
+}
+#level{
+	font-size:30px;
+	width:200px;
+	background:none;
+}
+#level span{
+	color:#F60;
+	font-weight:bold;
+}

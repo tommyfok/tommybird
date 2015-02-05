@@ -1,0 +1,80 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Flappy Tommy</title>	
+	<meta charset="utf-8">
+	<meta content="width=device-width,user-scalable=no,minimum-scale=1.0,maximum-scale=1.0" name="viewport">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="format-detection" content="telephone=no">
+	<meta name="keywords" content="">
+	<meta name="description" content="FlappyTommy made by TommyFok.">
+	<meta name="author" content="tommyfok">
+	<!--<link rel="stylesheet" type="text/css" href="style/game.css">-->
+</head>
+<body>
+	<div id="stage">
+		<div id="controls">
+			<div id="level" class="btn"></div>
+			<div id="play" class="btn">开始</div>
+			<!-- <div id="pause" class="btn">暂停</div> -->
+			<div id="reset" class="btn">重新开始</div>
+			<!-- <div id="score">分数：<span>0</span></div> -->
+		</div>
+		<div id="game"></div>
+		<div id="bg"></div>
+	</div>
+	<!-- seajs有什么办法可以依次加载并执行模块？ -->
+	<script src="lib/sea.js"></script>
+	<script>
+		//微信分享
+		document.addEventListener("WeixinJSBridgeReady", function onBridgeReady() {
+			//WeixinJSBridge.call('hideOptionMenu');
+		    // WeixinJSBridge.call("hideToolbar");
+		    var a = 'http://www.citygf.com/game/02/style/images/bird.png', d = location.href, b = document.title, c = "FlappyTommy made by TommyFok.";
+		    WeixinJSBridge.on("menu:share:appmessage", function() {
+		        WeixinJSBridge.invoke("sendAppMessage", {
+		            img_url:a,
+		            link:d,
+		            desc:c,
+		            title:document.title
+		        }, null);
+		    });
+		    WeixinJSBridge.on("menu:share:timeline", function() {
+		        WeixinJSBridge.invoke("shareTimeline", {
+		            img_url:a,
+		            link:d,
+		            desc:c,
+		            title:document.title+" - 广佛都市网荣誉出品"
+		        }, null);
+		    });
+		});
+		// seajs 配置
+		seajs.config({
+			// 设置引用库别名
+			alias: {
+				"jq" : "jquery",
+				"zt" : "zepto",
+				"zt.t" : "zepto.touch",
+				"jq.t" : "jquery.touch",
+				"th" : "TouchHelper"
+			},
+			paths: {
+				// 采用绝对路径，万无一失
+				"app" : "/game/tommybird/app"
+			},
+			// seajs有什么办法可以依次加载并执行模块？
+			// 此参数可进行预加载，但还是不能依次执行
+			// 目前的解决办法是，在zepto.touch中加入zepto依赖的声明：require("zt")
+			preload : [
+				"./style/game.css", // 还可以引入CSS
+				"jq"
+			]
+		});
+		// seajs 总是通过模块定义
+		// 使用模块实现功能
+		// 入口程序
+		seajs.use("app/main");
+	</script>
+</body>
+</html>
