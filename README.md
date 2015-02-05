@@ -1,2 +1,2 @@
 # tommybird
-Flappy bird exercise
+Flappy bird exercise[DEMO](http://tommyfok.github.io/tommybird)
